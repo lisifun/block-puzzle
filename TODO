@@ -1,0 +1,15 @@
+- Enter a new user or select one
+- Create a buttom to see all the users and change it
+- Create a button that changes the mode of the game (light/dark)
+- Generte 3 random pieces at the beggining of the game and when the 3 pieces are already use
+- Generate a button to turn the availables pieces
+- Select one random piece and add it to the board (where can be add it)
+- Update the board with the new piece
+- Update the score
+- Check for completed line (horizontally and vertically)
+- If there are completed lines we need to update the board
+- If the currecnt score is bigger than the maxScore show a message (GREAT!)
+- Create a button to restart the game and show a message asking if the user really want to start again
+- Show a message when there is not enough space (GAME OVER! /n NO SPACE LEFT!)
+- Check at the end of the game if current score > maxScore
+- Update maxScore if current score > maxScore
