@@ -6,20 +6,33 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body id="body">
     <main>
-      <button class="replay-button">REPLAY</button>
-      <div>
-        <div class="actual-score">SCORE: 0</div>
-        <div class="max-score">MAX SCORE: 0</div>
+      <div id="home-screen">
+        <div id="logo-game"></div>
+        <div>BLOCK PUZZLE</div>
+        <div>SCORE: 0</div>
+        <button class="start-button" style="background-color: red">
+          START
+        </button>
       </div>
-      <button class="mode-button">LIGHT / DARK</button>
+
+      <div id="game-screen">
+        <div id="game-options">
+          <button class="replay-button">REPLAY</button>
+          <div id="score">
+            <div class="actual-score">SCORE: 0</div>
+            <div class="max-score">MAX SCORE: 0</div>
+          </div>
+          <button class="mode-button">LIGHT / DARK</button>
+        </div>
+
+        <div id="board" class="probando esta pingueta ahora"></div>
+
+        <div id="random-pieces"></div>
     </main>
 
-    <div id="board"></div>
-
-    <div id="pieces"></div>
-
     <script src="script.js"></script>
+    <script src="pieces.js"></script>
   </body>
 </html>
