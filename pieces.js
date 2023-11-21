@@ -153,9 +153,40 @@ function drawPiece(ramdomIndex) {
 
   // With this attribute we can dragg the piece to the board
   newPiece.setAttribute("draggable", "true");
-  newPiece.addEventListener("click", function savePiece() {
-    selectedPiece = newPiece;
-    console.log(selectedPiece);
+  newPiece.addEventListener("dragstart", function drag(e) {
+    selectedPiece = e.target;
+    e.dataTransfer.setData("text", e.target.id);
+  });
+
+  newPiece.addEventListener("dragend", function () {
+    console.log("line 162 piece.js selectedPiece => ", selectedPiece);
+    console.log("line 163 pieces.js isFitting => ", isFitting);
+    console.log("line 164 selectedIndex => ", selectedIndex);
+    if (isFitting) {
+      console.log("testing");
+      console.log("first argument", pieces[Number(selectedPiece.id)]);
+      console.log("second argument", boardStatus);
+      console.log("third argument", selectedIndex);
+      let newChanges = updateBoardWithPiece(
+        pieces[Number(selectedPiece.id)],
+        boardStatus,
+        selectedIndex
+      );
+      console.log("line 164 pieces.js newChanges => ", newChanges);
+      drawBoard(checkCompletedLines(newChanges));
+      randomPieces.removeChild(selectedPiece);
+      if (randomPieces.childNodes.length === 0) {
+        pickThree();
+      }
+    }
+    // dragDone = true;
+    // setTimeout(() => {
+    //   console.log("changing done back");
+    //   dragDone = false;
+    // }, 1000);
+    // console.log("line 172", newChanges);
+    // drawBoard(checkCompletedLines(newChanges));
+    console.log("the drag operation is completed.");
   });
 
   for (let i = 0; i < piece.length; i++) {
@@ -186,6 +217,16 @@ function drawPiece(ramdomIndex) {
 function selectRandomPiece(arr) {
   let index = Math.floor(Math.random() * arr.length);
   return index;
+}
+
+function pickThree() {
+  let index1 = selectRandomPiece(pieces);
+  let index2 = selectRandomPiece(pieces);
+  let index3 = selectRandomPiece(pieces);
+
+  drawPiece(index1);
+  drawPiece(index2);
+  drawPiece(index3);
 }
 
 let index1 = selectRandomPiece(pieces);
