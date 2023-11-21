@@ -158,35 +158,35 @@ function drawPiece(ramdomIndex) {
     e.dataTransfer.setData("text", e.target.id);
   });
 
-  newPiece.addEventListener("dragend", function () {
-    console.log("line 162 piece.js selectedPiece => ", selectedPiece);
-    console.log("line 163 pieces.js isFitting => ", isFitting);
-    console.log("line 164 selectedIndex => ", selectedIndex);
+  newPiece.addEventListener("dragend", async function () {
     if (isFitting) {
-      console.log("testing");
-      console.log("first argument", pieces[Number(selectedPiece.id)]);
-      console.log("second argument", boardStatus);
-      console.log("third argument", selectedIndex);
       let newChanges = updateBoardWithPiece(
         pieces[Number(selectedPiece.id)],
         boardStatus,
         selectedIndex
       );
-      console.log("line 164 pieces.js newChanges => ", newChanges);
       drawBoard(checkCompletedLines(newChanges));
+
+      updateScore(pieces[Number(selectedPiece.id)]);
+
       randomPieces.removeChild(selectedPiece);
       if (randomPieces.childNodes.length === 0) {
         pickThree();
       }
     }
-    // dragDone = true;
-    // setTimeout(() => {
-    //   console.log("changing done back");
-    //   dragDone = false;
-    // }, 1000);
-    // console.log("line 172", newChanges);
-    // drawBoard(checkCompletedLines(newChanges));
-    console.log("the drag operation is completed.");
+
+    // To check if the game is Over
+    let result = [];
+    for (let i = 0; i < randomPieces.childNodes.length; i++) {
+      let piece = pieces[Number(randomPieces.childNodes[i].id)];
+      result.push(isGameOver(piece, boardStatus));
+    }
+    await new Promise((r) => setTimeout(r, 500));
+
+    if (!result.includes(true)) {
+      alert(`GAME OVER! 
+      NO SPACE LEFT`);
+    }
   });
 
   for (let i = 0; i < piece.length; i++) {

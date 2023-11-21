@@ -1,15 +1,30 @@
-- Enter a new user or select one
-- Create a buttom to see all the users and change it
-- Create a button that changes the mode of the game (light/dark)
-- Generte 3 random pieces at the beggining of the game and when the 3 pieces are already use
-- Generate a button to turn the availables pieces
-- Select one random piece and add it to the board (where can be add it)
-- Update the board with the new piece
-- Update the score
-- Check for completed line (horizontally and vertically)
-- If there are completed lines we need to update the board
-- If the currecnt score is bigger than the maxScore show a message (GREAT!)
+TO DO
+
+- Check if the game is over
+- Show a message when the game is over, when in the board is not enough space for the remaining pieces (GAME OVER! /n NO SPACE LEFT!)
 - Create a button to restart the game and show a message asking if the user really want to start again
-- Show a message when there is not enough space (GAME OVER! /n NO SPACE LEFT!)
-- Check at the end of the game if current score > maxScore
-- Update maxScore if current score > maxScore
+- Update the score every time the player add a new piece and every time the player complet a line
+- If the currecnt score is bigger than the maxScore show a message (GREAT!)
+- Check at the end of the game if current score > maxScore.
+- If current score > maxScore, update maxScore for the next game
+- Generate a button to turn the availables pieces
+- Enter a new player or select one
+- Ranking system
+- Create a buttom to see all the players and select one
+- Create a button that changes the mode of the game (light/dark)
+- Fix background color
+- Fix CSS buttons
+- Eliminate the background of the pieces when dragging
+- Show the pieces smaller in the the random pieces element
+- Clean the completed lines slowly
+
+DONE
+
+- Generate a board with a dimension 10x10
+- Generte 3 random pieces at the beggining of the game
+- Genetate 3 new random pieces every time the player uses the others
+- Select one random piece and drag and drop it onto the board
+- Check if that selected piece fit in the board
+- If the piece fit in the board in the selected location then is neccessary to update the board with the new piece
+- Check for completed lines (horizontal and vertical)
+- If there are completed lines we need to brake them, and clean the board

@@ -3,7 +3,7 @@
 // Background color for light mode
 const baseBackgroundColor = "#fbf5f7"; // For dark mode => "#0E1420"
 
-// Base color for light mode
+// Base color for the board in light mode
 const baseColorBoard = "#EBE9EB"; // For dark mode => '#232C3B
 
 // Board Matrix Status
@@ -18,7 +18,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
+    { color: baseColorBoard },
   ],
   [
     { color: baseColorBoard },
@@ -30,7 +30,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
+    { color: baseColorBoard },
   ],
   [
     { color: baseColorBoard },
@@ -42,7 +42,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
+    { color: baseColorBoard },
   ],
   [
     { color: baseColorBoard },
@@ -54,19 +54,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
-  ],
-  [
-    { color: "purple" },
     { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: baseColorBoard },
-    { color: "#5CB9E4" },
   ],
   [
     { color: baseColorBoard },
@@ -78,7 +66,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
+    { color: baseColorBoard },
   ],
   [
     { color: baseColorBoard },
@@ -90,19 +78,7 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
-  ],
-  [
     { color: baseColorBoard },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#E45C7D" },
-    { color: "#5CB9E4" },
   ],
   [
     { color: baseColorBoard },
@@ -114,19 +90,43 @@ let boardStatus = [
     { color: baseColorBoard },
     { color: baseColorBoard },
     { color: baseColorBoard },
-    { color: "#5CB9E4" },
+    { color: baseColorBoard },
   ],
   [
-    { color: "purple" },
-    { color: "green" },
-    { color: "green" },
-    { color: "blue" },
     { color: baseColorBoard },
-    { color: "red" },
-    { color: "red" },
-    { color: "red" },
-    { color: "red" },
-    { color: "#232C3B" },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+  ],
+  [
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+  ],
+  [
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
+    { color: baseColorBoard },
   ],
 ];
 
@@ -189,6 +189,10 @@ function checkCompletedLines(matrix) {
     if (test.length === 0) {
       completedColumns.push(j);
     }
+  }
+
+  if (completedRows.length !== 0 || completedColumns.length !== 0) {
+    score += completedRows.length * 10 + completedColumns.length * 10;
   }
 
   // To clean the completed rows
@@ -270,38 +274,10 @@ function dragAndDropOverBoard(e) {
           );
           if (isFitting) {
             selectedIndex = i;
-            // newChanges = updateBoardWithPiece(
-            //   pieces[Number(selectedPiece.id)],
-            //   boardStatus,
-            //   i
-            // );
-            // console.log("line 276 script.js selectedPiece => ", selectedPiece);
-            // console.log("line 277 script.js isFitting => ", isFitting);
-            // console.log("line 278 script.js newChanges => ", newChanges);
           }
-          // if (isFitting) {
-          //   console.log("266", dragDone);
-          //   setTimeout(() => {
-          //     if (dragDone) {
-          //       let newChanges = updateBoardWithPiece(
-          //         pieces[Number(selectedPiece.id)],
-          //         boardStatus,
-          //         i
-          //       );
-          //       console.log("line 270", newChanges);
-          //       // setTimeout(() => {
-          //       //   newChanges = null;
-          //       // }, 500);
-          //       drawBoard(checkCompletedLines(newChanges));
-          //     }
-          //   }, 100);
-          // }
         }
       }
     }
-    // else {
-    //   return false;
-    // }
   }
 
   mouseLocation();
@@ -312,33 +288,30 @@ function isFitPiece(piece, boardStatus, index) {
   const rowSelected = Math.floor(index / 10);
   const columnSelected = index % 10;
 
-  for (let i = 0; i < piece.length; i++) {
-    for (let j = 0; j < piece[i].length; j++) {
-      // console.log(
-      //   "Line 286 color ==>",
-      //   boardStatus[rowSelected + i][columnSelected + j]
-      // );
-      if (piece[i][j].color === baseBackgroundColor) {
-        continue;
-      } // e {
-      // console.log(
-      //   "Line 289 color ==>",
-      //   boardStatus[rowSelected + i][columnSelected + j].color
-      // );
-      if (
-        boardStatus[rowSelected + i][columnSelected + j].color ===
-        baseColorBoard
-      ) {
-        continue;
-      } else {
-        return false;
+  if (
+    rowSelected + piece.length > 10 ||
+    columnSelected + piece[0].length > 10
+  ) {
+    return false;
+  } else {
+    for (let i = 0; i < piece.length; i++) {
+      for (let j = 0; j < piece[i].length; j++) {
+        if (piece[i][j].color === baseBackgroundColor) {
+          continue;
+        } else {
+          if (
+            boardStatus[rowSelected + i][columnSelected + j].color ===
+            baseColorBoard
+          ) {
+            continue;
+          } else {
+            return false;
+          }
+        }
       }
     }
   }
-  // isFitting = true;
-  // setTimeout(() => {
-  //   isFitting = false;
-  // }, 1000);
+
   return true;
 }
 
@@ -361,12 +334,34 @@ function updateBoardWithPiece(piece, boardStatus, index) {
 }
 
 // Function to check if there is space in the board for the remaining pieces
-function isGameOver(randomPieces, boardStatus) {
-  for (let piece of randomPieces) {
-    console.log(piece);
+function isGameOver(piece, boardStatus) {
+  for (let i = 0; i < boardStatus.length; i++) {
+    for (let j = 0; j < boardStatus[i].length; j++) {
+      if (boardStatus[i][j].color === baseColorBoard) {
+        let index = i * 10 + j;
+        if (isFitPiece(piece, boardStatus, index)) {
+          return true;
+        }
+      } else {
+        continue;
+      }
+    }
   }
+  return false;
 }
 
-const randomPiecesTest = document.getElementById("random-pieces");
-console.log(randomPiecesTest);
-// console.log(isGameOver(,boardStatus))
+// Function to update the score
+let score = 0;
+function updateScore(piece) {
+  let currentScore = document.getElementById("actual-score");
+
+  for (let i = 0; i < piece.length; i++) {
+    for (let j = 0; j < piece[i].length; j++) {
+      if (piece[i][j].color !== baseBackgroundColor) {
+        score++;
+      }
+    }
+  }
+
+  currentScore.innerText = score;
+}
