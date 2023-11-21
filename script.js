@@ -1,5 +1,3 @@
-// VARIABLES
-
 // Background color for light mode
 const baseBackgroundColor = "#fbf5f7"; // For dark mode => "#0E1420"
 
@@ -130,7 +128,6 @@ let boardStatus = [
   ],
 ];
 
-// FUNCTIONS
 // Function to create the board blocks
 function createBlock(color) {
   // To create a new div element
@@ -191,9 +188,7 @@ function checkCompletedLines(matrix) {
     }
   }
 
-  if (completedRows.length !== 0 || completedColumns.length !== 0) {
-    score += completedRows.length * 10 + completedColumns.length * 10;
-  }
+  updateScoreCompletedLines(completedRows, completedColumns);
 
   // To clean the completed rows
   completedRows.forEach(
@@ -223,7 +218,6 @@ function checkCompletedLines(matrix) {
 }
 
 drawBoard(boardStatus);
-drawBoard(checkCompletedLines(boardStatus));
 
 // To track mouse position and check if the mouse is inside the board
 let mouseX;
@@ -237,7 +231,6 @@ document.addEventListener("dragover", dragAndDropOverBoard, false);
 
 function dragAndDropOverBoard(e) {
   e.preventDefault();
-  // e = e || window.event;
   mouseX = e.pageX;
   mouseY = e.pageY;
 
@@ -350,11 +343,15 @@ function isGameOver(piece, boardStatus) {
   return false;
 }
 
-// Function to update the score
-let score = 0;
-function updateScore(piece) {
-  let currentScore = document.getElementById("actual-score");
+// Current score
+let currentScoreElement = document.getElementById("actual-score");
+let score = Number(currentScoreElement.textContent);
+// Max score
+let maxScoreElement = document.getElementById("max-score");
+let maxScore = Number(maxScoreElement.textContent);
 
+// Function to update the score
+function updateScore(piece) {
   for (let i = 0; i < piece.length; i++) {
     for (let j = 0; j < piece[i].length; j++) {
       if (piece[i][j].color !== baseBackgroundColor) {
@@ -363,5 +360,21 @@ function updateScore(piece) {
     }
   }
 
-  currentScore.innerText = score;
+  currentScoreElement.innerText = score;
+
+  // if (score > maxScore) {
+  //   alert("NEW PERSONAL HIGHSCORE");
+  // }
+}
+
+// Function to update the score when a line is completed
+function updateScoreCompletedLines(completedRows, completedColumns) {
+  if (completedRows.length !== 0 || completedColumns.length !== 0) {
+    // If more than two lines are completed the score will increment 100. Otherwise will increment 10
+    if (completedRows.length + completedColumns.length > 2) {
+      score += 100;
+    } else {
+      score += completedRows.length * 10 + completedColumns.length * 10;
+    }
+  }
 }

@@ -1,9 +1,7 @@
 TO DO
 
-- Check if the game is over
 - Show a message when the game is over, when in the board is not enough space for the remaining pieces (GAME OVER! /n NO SPACE LEFT!)
 - Create a button to restart the game and show a message asking if the user really want to start again
-- Update the score every time the player add a new piece and every time the player complet a line
 - If the currecnt score is bigger than the maxScore show a message (GREAT!)
 - Check at the end of the game if current score > maxScore.
 - If current score > maxScore, update maxScore for the next game
@@ -28,3 +26,5 @@ DONE
 - If the piece fit in the board in the selected location then is neccessary to update the board with the new piece
 - Check for completed lines (horizontal and vertical)
 - If there are completed lines we need to brake them, and clean the board
+- Check if the game is over
+- Update the score every time the player add a new piece and every time the player complet a line

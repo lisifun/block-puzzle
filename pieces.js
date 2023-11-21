@@ -153,41 +153,8 @@ function drawPiece(ramdomIndex) {
 
   // With this attribute we can dragg the piece to the board
   newPiece.setAttribute("draggable", "true");
-  newPiece.addEventListener("dragstart", function drag(e) {
-    selectedPiece = e.target;
-    e.dataTransfer.setData("text", e.target.id);
-  });
-
-  newPiece.addEventListener("dragend", async function () {
-    if (isFitting) {
-      let newChanges = updateBoardWithPiece(
-        pieces[Number(selectedPiece.id)],
-        boardStatus,
-        selectedIndex
-      );
-      drawBoard(checkCompletedLines(newChanges));
-
-      updateScore(pieces[Number(selectedPiece.id)]);
-
-      randomPieces.removeChild(selectedPiece);
-      if (randomPieces.childNodes.length === 0) {
-        pickThree();
-      }
-    }
-
-    // To check if the game is Over
-    let result = [];
-    for (let i = 0; i < randomPieces.childNodes.length; i++) {
-      let piece = pieces[Number(randomPieces.childNodes[i].id)];
-      result.push(isGameOver(piece, boardStatus));
-    }
-    await new Promise((r) => setTimeout(r, 500));
-
-    if (!result.includes(true)) {
-      alert(`GAME OVER! 
-      NO SPACE LEFT`);
-    }
-  });
+  newPiece.addEventListener("dragstart", drag);
+  newPiece.addEventListener("dragend", drop);
 
   for (let i = 0; i < piece.length; i++) {
     let newRowBlocks = document.createElement("div");
@@ -208,7 +175,6 @@ function drawPiece(ramdomIndex) {
     newPiece.appendChild(newRowBlocks);
   }
 
-  let randomPieces = document.getElementById("random-pieces");
   randomPieces.appendChild(newPiece);
   return newPiece;
 }
@@ -227,6 +193,44 @@ function pickThree() {
   drawPiece(index1);
   drawPiece(index2);
   drawPiece(index3);
+}
+
+// To drag the piece
+function drag(e) {
+  selectedPiece = e.target;
+  e.dataTransfer.setData("text", e.target.id);
+}
+// Random pieces
+let randomPieces = document.getElementById("random-pieces");
+// To drop the piece
+async function drop(e) {
+  if (isFitting) {
+    let newChanges = updateBoardWithPiece(
+      pieces[Number(selectedPiece.id)],
+      boardStatus,
+      selectedIndex
+    );
+    drawBoard(checkCompletedLines(newChanges));
+
+    updateScore(pieces[Number(selectedPiece.id)]);
+
+    randomPieces.removeChild(selectedPiece);
+    if (randomPieces.childNodes.length === 0) {
+      pickThree();
+    }
+  }
+
+  // To check if the game is Over
+  let result = [];
+  for (let i = 0; i < randomPieces.childNodes.length; i++) {
+    let piece = pieces[Number(randomPieces.childNodes[i].id)];
+    result.push(isGameOver(piece, boardStatus));
+  }
+  await new Promise((r) => setTimeout(r, 500));
+
+  if (!result.includes(true)) {
+    alert(`GAME OVER! NO SPACE LEFT`);
+  }
 }
 
 let index1 = selectRandomPiece(pieces);
