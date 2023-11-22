@@ -26,117 +26,85 @@
 
 // Pieces of the game
 let pieces = [
-  [[{ color: "#7883D5" }]], // index => 0  piece => single block
+  [[{ color: "#6A78CC" }]], // index => 0  piece => single block
   [[{ color: "#FDBB30" }, { color: "#FDBB30" }]], // index => 1  piece => two horizontal blocks
   [[{ color: "#FDBB30" }], [{ color: "#FDBB30" }]], // index => 2 piece => two vertical blocks
-  [[{ color: "#EC8E48" }, { color: "#EC8E48" }, { color: "#EC8E48" }]], // index => 3 piece => three horizontal blocks
-  [[{ color: "#EC8E48" }], [{ color: "#EC8E48" }], [{ color: "#EC8E48" }]], // index => 4 piece => three vertical blocks
+  [[{ color: "#E6833B" }, { color: "#E6833B" }, { color: "#E6833B" }]], // index => 3 piece => three horizontal blocks
+  [[{ color: "#E6833B" }], [{ color: "#E6833B" }], [{ color: "#E6833B" }]], // index => 4 piece => three vertical blocks
   [
     [
-      { color: "#E45C7D" },
-      { color: "#E45C7D" },
-      { color: "#E45C7D" },
-      { color: "#E45C7D" },
+      { color: "#DE516E" },
+      { color: "#DE516E" },
+      { color: "#DE516E" },
+      { color: "#DE516E" },
     ],
   ], // index => 5 piece => four horizontal blocks
   [
-    [{ color: "#E45C7D" }],
-    [{ color: "#E45C7D" }],
-    [{ color: "#E45C7D" }],
-    [{ color: "#E45C7D" }],
+    [{ color: "#DE516E" }],
+    [{ color: "#DE516E" }],
+    [{ color: "#DE516E" }],
+    [{ color: "#DE516E" }],
   ], // index => 6 piece => four vertical blocks
   [
-    [{ color: "#98DF53" }, { color: "#98DF53" }],
-    [{ color: "#98DF53" }, { color: "#98DF53" }],
+    [{ color: "#89D844" }, { color: "#89D844" }],
+    [{ color: "#89D844" }, { color: "#89D844" }],
   ], // index => 7 piece => square
   [
     [
-      { color: "#DA5753" },
-      { color: "#DA5753" },
-      { color: "#DA5753" },
-      { color: "#DA5753" },
-      { color: "#DA5753" },
+      { color: "#D14E43" },
+      { color: "#D14E43" },
+      { color: "#D14E43" },
+      { color: "#D14E43" },
+      { color: "#D14E43" },
     ],
   ], // index => 8 piece => five horizontal blocks
   [
-    [{ color: "#DA5753" }],
-    [{ color: "#DA5753" }],
-    [{ color: "#DA5753" }],
-    [{ color: "#DA5753" }],
-    [{ color: "#DA5753" }],
+    [{ color: "#D14E43" }],
+    [{ color: "#D14E43" }],
+    [{ color: "#D14E43" }],
+    [{ color: "#D14E43" }],
+    [{ color: "#D14E43" }],
   ], // index => 9 piece => five vertical blocks
   [
-    [{ color: "#51D4AE" }, { color: "#51D4AE" }, { color: "#51D4AE" }],
-    [{ color: "#51D4AE" }, { color: "#51D4AE" }, { color: "#51D4AE" }],
-    [{ color: "#51D4AE" }, { color: "#51D4AE" }, { color: "#51D4AE" }],
+    [{ color: "#43CEA0" }, { color: "#43CEA0" }, { color: "#43CEA0" }],
+    [{ color: "#43CEA0" }, { color: "#43CEA0" }, { color: "#43CEA0" }],
+    [{ color: "#43CEA0" }, { color: "#43CEA0" }, { color: "#43CEA0" }],
   ], // index => 10 piece => cube
   [
-    [{ color: "#59C980" }, { color: baseBackgroundColor }],
-    [{ color: "#59C980" }, { color: "#59C980" }],
+    [{ color: "#4CC273" }, { color: "none" }],
+    [{ color: "#4CC273" }, { color: "#4CC273" }],
   ], // index => 11 piece => short L (left bottom corner)
   [
-    [{ color: baseBackgroundColor }, { color: "#59C980" }],
-    [{ color: "#59C980" }, { color: "#59C980" }],
+    [{ color: "none" }, { color: "#4CC273" }],
+    [{ color: "#4CC273" }, { color: "#4CC273" }],
   ], // index => 12 piece => short L (right bottom corner)
   [
-    [{ color: "#59C980" }, { color: "#59C980" }],
-    [{ color: "#59C980" }, { color: baseBackgroundColor }],
+    [{ color: "#4CC273" }, { color: "#4CC273" }],
+    [{ color: "#4CC273" }, { color: "none" }],
   ], // index => 13 piece => short L (left top corner)
   [
-    [{ color: "#59C980" }, { color: "#59C980" }],
-    [{ color: baseBackgroundColor }, { color: "#59C980" }],
+    [{ color: "#4CC273" }, { color: "#4CC273" }],
+    [{ color: "none" }, { color: "#4CC273" }],
   ], // index => 14 piece => short L (right top corner)
   [
-    [
-      { color: "#5CB9E4" },
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-    ],
-    [
-      { color: "#5CB9E4" },
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-    ],
-    [{ color: "#5CB9E4" }, { color: "#5CB9E4" }, { color: "#5CB9E4" }],
+    [{ color: "#4EB1DD" }, { color: "none" }, { color: "none" }],
+    [{ color: "#4EB1DD" }, { color: "none" }, { color: "none" }],
+    [{ color: "#4EB1DD" }, { color: "#4EB1DD" }, { color: "#4EB1DD" }],
   ], // index => 15 piece => large L (left bottom corner)
   [
-    [
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-      { color: "#5CB9E4" },
-    ],
-    [
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-      { color: "#5CB9E4" },
-    ],
-    [{ color: "#5CB9E4" }, { color: "#5CB9E4" }, { color: "#5CB9E4" }],
+    [{ color: "none" }, { color: "none" }, { color: "#4EB1DD" }],
+    [{ color: "none" }, { color: "none" }, { color: "#4EB1DD" }],
+    [{ color: "#4EB1DD" }, { color: "#4EB1DD" }, { color: "#4EB1DD" }],
   ], // index => 16 piece => large L (right bottom corner)
   [
-    [{ color: "#5CB9E4" }, { color: "#5CB9E4" }, { color: "#5CB9E4" }],
-    [
-      { color: "#5CB9E4" },
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-    ],
-    [
-      { color: "#5CB9E4" },
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-    ],
+    [{ color: "#4EB1DD" }, { color: "#4EB1DD" }, { color: "#4EB1DD" }],
+    [{ color: "#4EB1DD" }, { color: "none" }, { color: "none" }],
+    [{ color: "#4EB1DD" }, { color: "none" }, { color: "none" }],
   ], // index => 17 piece => large L (left top corner)
   [
-    [{ color: "#5CB9E4" }, { color: "#5CB9E4" }, { color: "#5CB9E4" }],
-    [
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-      { color: "#5CB9E4" },
-    ],
-    [
-      { color: baseBackgroundColor },
-      { color: baseBackgroundColor },
-      { color: "#5CB9E4" },
-    ],
+    [{ color: "#4EB1DD" }, { color: "#4EB1DD" }, { color: "#4EB1DD" }],
+    [{ color: "none" }, { color: "none" }, { color: "#4EB1DD" }],
+    [{ color: "none" }, { color: "none" }, { color: "#4EB1DD" }],
   ], // index => 18 piece => large L (right top corner)
 ];
 
@@ -198,8 +166,23 @@ function pickThree() {
 // To drag the piece
 function drag(e) {
   selectedPiece = e.target;
+
   e.dataTransfer.setData("text", e.target.id);
+  selectedPiece.style.transition = "opacity 1000s";
+  selectedPiece.style.opacity = 0;
+
+  // selectedPiece = e.target;
+  // // Set the data to be transferred during the drag
+  // e.dataTransfer.setData("text", e.target.id);
+  // // Set the opacity to 0 with a transition
+  // selectedPiece.style.transition = "opacity 0.3s";
+  // selectedPiece.style.opacity = 0;
+  // // Remove the opacity when the drag ends
+  // e.target.addEventListener("dragend", () => {
+  //   selectedPiece.style.opacity = 1;
+  // });
 }
+
 // Random pieces
 let randomPieces = document.getElementById("random-pieces");
 // To drop the piece
@@ -231,6 +214,7 @@ async function drop(e) {
   if (!result.includes(true)) {
     alert(`GAME OVER! NO SPACE LEFT`);
   }
+  console.log("drag end");
 }
 
 let index1 = selectRandomPiece(pieces);

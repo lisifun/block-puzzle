@@ -12,7 +12,7 @@ body {
   width: 700px;
   border-radius: 25px;
   padding: 20px 0px;
-  background-color: #fbf5f7;
+  background-color: #f8f5f4;
 }
 
 button {
@@ -62,9 +62,9 @@ button {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 3px;
   width: 450px;
-  background-color: #fbf5f7;
+  background-color: #f8f5f4;
 }
 
 #random-pieces {

@@ -1,8 +1,8 @@
 // Background color for light mode
-const baseBackgroundColor = "#fbf5f7"; // For dark mode => "#0E1420"
+const baseBackgroundColor = "#F8F5F4"; // For dark mode => "#0E1420"
 
 // Base color for the board in light mode
-const baseColorBoard = "#EBE9EB"; // For dark mode => '#232C3B
+const baseColorBoard = "#E8E8E8"; // For dark mode => '#232C3B
 
 // Board Matrix Status
 let boardStatus = [
@@ -289,7 +289,7 @@ function isFitPiece(piece, boardStatus, index) {
   } else {
     for (let i = 0; i < piece.length; i++) {
       for (let j = 0; j < piece[i].length; j++) {
-        if (piece[i][j].color === baseBackgroundColor) {
+        if (piece[i][j].color === "none") {
           continue;
         } else {
           if (
@@ -315,7 +315,7 @@ function updateBoardWithPiece(piece, boardStatus, index) {
 
   for (let i = 0; i < piece.length; i++) {
     for (let j = 0; j < piece[i].length; j++) {
-      if (piece[i][j].color === baseBackgroundColor) {
+      if (piece[i][j].color === "none") {
         continue;
       } else {
         boardStatus[rowSelected + i][columnSelected + j].color =
