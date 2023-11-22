@@ -1,29 +1,3 @@
-// class Piece {
-//   constructor() {
-//     // This properties
-//   }
-
-//   randomPiece() {
-//     // To select a random piece
-//   }
-
-//   drawPice() {
-//     // To draw the piece
-//   }
-
-//   piecesToDragAndDrop() {
-//     // This is going to be a array with 3 random pieces
-//   }
-
-//   checkForPieces() {
-//     // If the length of the array of pieces is === 0, we have to add 3 new random pieces
-//   }
-
-//   toRotatePieces() {
-//     // To rotate the pieces in the array
-//   }
-// }
-
 // Pieces of the game
 let pieces = [
   [[{ color: "#6A78CC" }]], // index => 0  piece => single block
@@ -170,17 +144,6 @@ function drag(e) {
   e.dataTransfer.setData("text", e.target.id);
   selectedPiece.style.transition = "opacity 1000s";
   selectedPiece.style.opacity = 0;
-
-  // selectedPiece = e.target;
-  // // Set the data to be transferred during the drag
-  // e.dataTransfer.setData("text", e.target.id);
-  // // Set the opacity to 0 with a transition
-  // selectedPiece.style.transition = "opacity 0.3s";
-  // selectedPiece.style.opacity = 0;
-  // // Remove the opacity when the drag ends
-  // e.target.addEventListener("dragend", () => {
-  //   selectedPiece.style.opacity = 1;
-  // });
 }
 
 // Random pieces
