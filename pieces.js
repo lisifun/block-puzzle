@@ -151,14 +151,13 @@ let randomPieces = document.getElementById("random-pieces");
 // To drop the piece
 async function drop(e) {
   if (isFitting) {
-    let newChanges = updateBoardWithPiece(
+    let newChanges = newBoard.updateBoardWithPiece(
       pieces[Number(selectedPiece.id)],
-      boardStatus,
       selectedIndex
     );
-    drawBoard(checkCompletedLines(newChanges));
+    newBoard.drawBoard(newBoard.checkAndCleanCompletedLines(newChanges));
 
-    updateScore(pieces[Number(selectedPiece.id)]);
+    // updateScore(pieces[Number(selectedPiece.id)]);
 
     randomPieces.removeChild(selectedPiece);
     if (randomPieces.childNodes.length === 0) {
@@ -170,7 +169,7 @@ async function drop(e) {
   let result = [];
   for (let i = 0; i < randomPieces.childNodes.length; i++) {
     let piece = pieces[Number(randomPieces.childNodes[i].id)];
-    result.push(isGameOver(piece, boardStatus));
+    result.push(newBoard.isGameOver(piece, boardStatus));
   }
   await new Promise((r) => setTimeout(r, 500));
 

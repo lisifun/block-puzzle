@@ -4,7 +4,7 @@ class Board {
     this.boardStatus = boardStatus;
   }
 
-  boardBlock() {
+  boardBlock(color) {
     const newBlock = document.createElement("div");
 
     newBlock.className = "board-block";
@@ -58,6 +58,8 @@ class Board {
   }
 
   updateBoardWithPiece(piece, index) {
+    console.log("inside updateBoardWithPiece method");
+    console.log(piece, index);
     const rowSelected = Math.floor(index / 10);
     const columnSelected = index % 10;
 
@@ -74,7 +76,7 @@ class Board {
     return this.boardStatus;
   }
 
-  checkCompletedLines() {
+  checkAndCleanCompletedLines() {
     // Two variables to save the index when a row or a column is completed
     let completedRows = [];
     let completedColumns = [];
@@ -99,49 +101,60 @@ class Board {
         completedColumns.push(j);
       }
     }
-    return [completedRows, completedColumns];
-  }
 
-  cleanCompletedLines() {
-    if (
-      this.checkCompletedLines()[0].length !== 0 ||
-      this.checkCompletedLines()[1].length !== 0
-    ) {
+    // Delayed cleaning process after 1000 milliseconds (1 second)
+    setTimeout(() => {
       // To clean the completed rows
-      completedRows.forEach(
-        (row) =>
-          (this.boardStatus[row] = [
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-            { color: baseColorBoard },
-          ])
-      );
+      completedRows.forEach((row) => {
+        let col = 0;
+
+        // Define a function to remove blocks one by one
+        const removeBlock = () => {
+          if (col < this.boardStatus[row].length) {
+            this.boardStatus[row][col] = { color: baseColorBoard };
+            this.drawBoard(); // Redraw the board after each block removal
+            col++;
+
+            // Call the next block removal after a delay
+            setTimeout(removeBlock, 100); // Adjust the delay time as needed
+          }
+        };
+
+        // Start the block removal process for the current row
+        removeBlock();
+      });
 
       // To clean the completed columns
       completedColumns.forEach((column) => {
-        for (let i = 0; i < this.boardStatus.length; i++) {
-          this.boardStatus[i][column] = { color: baseColorBoard };
-        }
+        let row = 0;
+
+        // Define a function to remove blocks one by one
+        const removeBlock = () => {
+          if (row < this.boardStatus.length) {
+            this.boardStatus[row][column] = { color: baseColorBoard };
+            this.drawBoard(); // Redraw the board after each block removal
+            row++;
+
+            // Call the next block removal after a delay
+            setTimeout(removeBlock, 100); // Adjust the delay time as needed
+          }
+        };
+
+        // Start the block removal process for the current column
+        removeBlock();
       });
-    }
+    }, 1000); // 1000 milliseconds (1 second) delay
+
     return this.boardStatus;
   }
 
   isGameOver(piece) {
-    // To check if there are no more space for the pieces
-
     for (let i = 0; i < this.boardStatus.length; i++) {
       for (let j = 0; j < this.boardStatus[i].length; j++) {
         if (this.boardStatus[i][j].color === baseColorBoard) {
           let index = i * 10 + j;
-          if (this.isFitPiece(piece, this.boardStatus, index)) {
+
+          if (this.isFitPiece(piece, index)) {
             return true;
           }
         } else {

@@ -1,6 +1,5 @@
 TO DO
 
-- Create the classes
 - Create a button to restart the game and show a message asking if the user really want to start again
 - If the currecnt score is bigger than the maxScore show a message (GREAT!)
 - Check at the end of the game if current score > maxScore.
@@ -13,7 +12,6 @@ TO DO
 - Fix background color
 - Fix CSS buttons
 - Show the pieces smaller in the the random pieces element
-- Clean the completed lines slowly
 
 DONE
 
@@ -29,3 +27,5 @@ DONE
 - Update the score every time the player add a new piece and every time the player complet a line
 - Show a message when the game is over, when in the board is not enough space for the remaining pieces (GAME OVER! /n NO SPACE LEFT!)
 - Eliminate the background of the pieces when dragging
+- Clean the completed lines slowly
+- Create the classes
