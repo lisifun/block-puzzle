@@ -54,12 +54,14 @@
       <div id="game-screen">
         <div class="game-screen-element">
           <div id="game-options">
-            <button class="replay-button"><i class="fas fa-redo"></i></button>
+            <button id="restart-button" class="restart-button-game-screen">
+              <i class="fas fa-redo"></i>
+            </button>
             <div id="score">
               <div>SCORE: <span id="actual-score">0</span></div>
               <div>MAX SCORE: <span id="max-score">0</span></div>
             </div>
-            <button class="mode-button">
+            <button id="mode-button">
               <i class="fas fa-sun"></i>
             </button>
           </div>
@@ -69,32 +71,32 @@
       </div>
     </main>
 
-    <!-- <div id="replay-game">
-      <div class="replay-screen-element">
-        <div class="replay-message">HOLD ON!</div>
+    <div id="restart-game">
+      <div id="restart-screen-element">
+        <div class="restart-message">HOLD ON!</div>
         <div>
-          Your current score will be reset. Are you sure you want to restart
-          this game
+          Your current score <br />
+          will be reset. <br />Are you sure you want to <br />restart this game?
         </div>
         <div>
-          <button class="restart-button">YES</button>
-          <button>NO</button>
+          <button id="yes-button">YES</button>
+          <button id="no-button">NO</button>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div id="end-screen">
-      <div class="end-screen-element">
+      <div id="end-screen-element">
         <div class="end-message">
           GAME OVER <br />
           NO SPACE LEFT
         </div>
-        <button class="restart-button">NEW GAME</button>
+        <button class="restart-button-game-over">NEW GAME</button>
       </div>
     </div>
 
-    <script src="game.js"></script>
     <script src="board.js"></script>
+    <script src="game.js"></script>
     <script src="draw-functions.js"></script>
     <script src="script.js"></script>
     <script src="pieces.js"></script>

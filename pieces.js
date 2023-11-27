@@ -200,10 +200,11 @@ async function drop(e) {
   }
 }
 
-let index1 = selectRandomPiece(pieces);
-let index2 = selectRandomPiece(pieces);
-let index3 = selectRandomPiece(pieces);
+// let index1 = selectRandomPiece(pieces);
+// let index2 = selectRandomPiece(pieces);
+// let index3 = selectRandomPiece(pieces);
 
-drawPiece(index1);
-drawPiece(index2);
-drawPiece(index3);
+// drawPiece(index1);
+// drawPiece(index2);
+// drawPiece(index3);
+pickThree();

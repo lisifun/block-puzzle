@@ -1,12 +1,43 @@
-const newGame = new Game();
-
+let newGame;
+newGame = new Game();
 newGame.open();
 
-const newBoard = new Board();
+let newBoard;
+newBoard = new Board();
 const newBoardElement = newBoard.boardElement;
 const newBoardStatus = newBoard.boardStatus;
 
 drawBoard(newBoardStatus, newBoardElement);
+
+// To restart the game with the button
+// To show the box container when the player wants to restart the game
+const restartButton = document.getElementById("restart-button");
+restartButton.addEventListener("click", () => {
+  newGame.startNewGame();
+});
+
+// To switch the mode of the game
+const switchButton = document.getElementById("mode-button");
+switchButton.addEventListener("click", function toggleMode() {
+  const body = document.body;
+  const icons = document.getElementsByTagName("i");
+  const board = document.getElementById("board");
+  // const endScreen = document.getElementById("end-screen-element");
+
+  console.log(board.childNodes);
+
+  body.classList.toggle("dark-mode");
+  board.classList.toggle("dark-mode");
+  //   endScreen.classList.toggle("dark-mode");
+  for (let icon of icons) {
+    icon.classList.toggle("dark-mode");
+  }
+
+  // i need to change the color of the block and for that i also need to modify the functiond draw!!!!
+  // for (let block of board.childNodes) {
+  //   block.style.backgroundColor = "#464646";
+  // }
+});
 
 // To track mouse position and check if the mouse is inside the board
 let mouseX;

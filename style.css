@@ -5,14 +5,27 @@ html {
   background-color: black;
   font-family: "IBM Plex Mono", monospace;
   text-align: center;
-  color: black;
+}
+
+i {
+  color: #484848;
+}
+
+i.dark-mode {
+  color: #fefefe;
 }
 
 body {
   width: 700px;
   border-radius: 2px;
   padding: 20px 0px;
-  background-color: #f8f5f4; /*  #0f1421;*/
+  background-color: #f9f5f4;
+  color: #484848;
+}
+
+body.dark-mode {
+  background-color: #0f1421;
+  color: #fefefe;
 }
 
 .home-screen-element {
@@ -77,30 +90,6 @@ body {
   font-weight: bold;
 }
 
-/* .max-score {
-  display: flex;
-  gap: 20px;
-}
-.max-score > i {
-  font-size: 1.5em;
-}
-
-.max-score > span {
-  font-size: 1.5em;
-}
-
-.start-button {
-  width: 120px;
-  height: 120px;
-  border-radius: 4px;
-  background-color: #d11905;
-}
-
-.start-button > i {
-  color: white;
-  font-size: 3em;
-} */
-
 .game-screen-element {
   display: flex;
   flex-direction: column;
@@ -121,25 +110,30 @@ body {
   align-items: center;
 }
 
-.replay-button {
+.restart-button-game-screen {
   border-style: none;
-  /* border-radius: 8px; */
+
   background-color: transparent;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
-.mode-button {
+#mode-button {
   border-style: none;
   background-color: transparent;
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
+
 #board {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 3px;
   width: 450px;
-  background-color: #f8f5f4; /*  #0f1421;*/
+  background-color: #f9f5f4;
+}
+
+#board.dark-mode {
+  background-color: #0f1421;
 }
 
 #random-pieces {
@@ -153,6 +147,14 @@ body {
   display: flex;
 }
 
+#restart-game {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 #end-screen {
   position: fixed;
   top: 0;
@@ -162,7 +164,8 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.end-screen-element {
+#restart-screen-element,
+#end-screen-element {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,19 +178,37 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f8f5f4;
+  background-color: #f9f5f4;
+  color: #484848;
 }
 
+/* #end-screen-element.dark-mode {
+  background-color: #0f1421;
+  color: #fefefe;
+} */
+
+.restart-message,
 .end-message {
   font-size: 1.5em;
 }
 
-.restart-button {
+#yes-button,
+#no-button {
+  font-size: 1em;
+  color: white;
+  width: 80px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #03c7b6;
+  border: none;
+}
+
+.restart-button-game-over {
   font-size: 1em;
   color: white;
   width: 165px;
   height: 57px;
   border-radius: 50px;
-  background-color: cornflowerblue;
+  background-color: #03c7b6;
   border: none;
 }
