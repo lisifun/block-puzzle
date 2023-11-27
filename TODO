@@ -9,9 +9,6 @@ TO DO
 - Ranking system
 - Create a buttom to see all the players and select one
 - Create a button that changes the mode of the game (light/dark)
-- Fix background color
-- Fix CSS buttons
-- Show the pieces smaller in the the random pieces element
 
 DONE
 
@@ -29,3 +26,6 @@ DONE
 - Eliminate the background of the pieces when dragging
 - Clean the completed lines slowly
 - Create the classes
+- Fix background color
+- Fix CSS buttons
+- Show the pieces smaller in the the random pieces element

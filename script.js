@@ -1,5 +1,12 @@
+const newGame = new Game();
+
+newGame.open();
+
 const newBoard = new Board();
-newBoard.drawBoard();
+const newBoardElement = newBoard.boardElement;
+const newBoardStatus = newBoard.boardStatus;
+
+drawBoard(newBoardStatus, newBoardElement);
 
 // To track mouse position and check if the mouse is inside the board
 let mouseX;
@@ -7,6 +14,7 @@ let mouseY;
 let isFitting;
 let selectedIndex;
 let newChanges;
+let currentBoardStatus;
 
 document.addEventListener("dragover", dragAndDropOntoBoard, false);
 
@@ -48,39 +56,3 @@ function dragAndDropOntoBoard(e) {
     }
   }
 }
-
-// // Current score
-// let currentScoreElement = document.getElementById("actual-score");
-// let score = Number(currentScoreElement.textContent);
-// // Max score
-// let maxScoreElement = document.getElementById("max-score");
-// let maxScore = Number(maxScoreElement.textContent);
-
-// // Function to update the score
-// function updateScore(piece) {
-//   for (let i = 0; i < piece.length; i++) {
-//     for (let j = 0; j < piece[i].length; j++) {
-//       if (piece[i][j].color !== "none") {
-//         score++;
-//       }
-//     }
-//   }
-
-//   currentScoreElement.innerText = score;
-
-//   // if (score > maxScore) {
-//   //   alert("NEW PERSONAL HIGHSCORE");
-//   // }
-// }
-
-// // Function to update the score when a line is completed
-// function updateScoreCompletedLines(completedRows, completedColumns) {
-//   if (completedRows.length !== 0 || completedColumns.length !== 0) {
-//     // If more than two lines are completed the score will increment 100. Otherwise will increment 10
-//     if (completedRows.length + completedColumns.length > 2) {
-//       score += 100;
-//     } else {
-//       score += completedRows.length * 10 + completedColumns.length * 10;
-//     }
-//   }
-// }

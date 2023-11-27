@@ -5,37 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body id="body">
     <main>
       <div id="home-screen">
-        <div id="logo-game"></div>
-        <div>BLOCK PUZZLE</div>
-        <div>SCORE: 0</div>
-        <button class="start-button" style="background-color: red">
-          START
-        </button>
+        <div class="home-screen-element">
+          <div id="logo-game">
+            <div class="row1">
+              <div class="block1"></div>
+              <div class="block2"></div>
+              <div class="block2"></div>
+              <div class="block2"></div>
+            </div>
+            <div class="row2">
+              <div class="block1"></div>
+              <div class="block3"></div>
+              <div class="block3"></div>
+              <div class="block2"></div>
+            </div>
+            <div class="row3">
+              <div class="block1"></div>
+              <div class="block3"></div>
+              <div class="block3"></div>
+              <div class="block2"></div>
+            </div>
+            <div class="row4">
+              <div class="block1"></div>
+              <div class="block4"></div>
+              <div class="block4"></div>
+              <div class="block4"></div>
+            </div>
+          </div>
+          <div class="game-name">BLOCK <br />PUZZLE</div>
+        </div>
       </div>
 
       <div id="game-screen">
-        <div id="game-options">
-          <button class="replay-button">REPLAY</button>
-          <div id="score">
-            <div>SCORE: <span id="actual-score">0</span></div>
-            <div>MAX SCORE: <span id="max-score">0</span></div>
+        <div class="game-screen-element">
+          <div id="game-options">
+            <button class="replay-button"><i class="fas fa-redo"></i></button>
+            <div id="score">
+              <div>SCORE: <span id="actual-score">0</span></div>
+              <div>MAX SCORE: <span id="max-score">0</span></div>
+            </div>
+            <button class="mode-button">
+              <i class="fas fa-sun"></i>
+            </button>
           </div>
-          <button class="mode-button">LIGHT / DARK</button>
+
+          <div id="board"></div>
+
+          <div id="random-pieces"></div>
         </div>
-
-        <div id="board"></div>
-
-        <div id="random-pieces"></div>
       </div>
-
-      <div id="end-screen" style="display: none"></div>
     </main>
 
+    <!-- <div id="replay-game">
+      <div class="replay-screen-element">
+        <div class="replay-message">HOLD ON!</div>
+        <div>
+          Your current score will be reset. Are you sure you want to restart
+          this game
+        </div>
+        <div>
+          <button class="restart-button">YES</button>
+          <button>NO</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="end-screen">
+      <div class="end-screen-element">
+        <div class="end-message">
+          GAME OVER <br />
+          NO SPACE LEFT
+        </div>
+        <button class="restart-button">NEW GAME</button>
+      </div>
+    </div>
+
+    <script src="game.js"></script>
     <script src="board.js"></script>
+    <script src="draw-functions.js"></script>
     <script src="script.js"></script>
     <script src="pieces.js"></script>
   </body>
