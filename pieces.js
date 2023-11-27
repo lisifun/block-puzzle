@@ -185,12 +185,8 @@ async function drop(e) {
 
   // To check if the game is Over
   let result = [];
-  console.log(
-    "RANDOM PIECES to check if they fits in the board => ",
-    randomPieces.childNodes
-  );
 
-  await new Promise((r) => setTimeout(r, 1500));
+  await new Promise((r) => setTimeout(r, 2000));
   for (let i = 0; i < randomPieces.childNodes.length; i++) {
     let piece = pieces[Number(randomPieces.childNodes[i].id)];
     result.push(newBoard.isGameOver(piece, newBoard.boardStatus));
@@ -200,7 +196,7 @@ async function drop(e) {
   if (!result.includes(true)) {
     alert(`GAME OVER! NO SPACE LEFT`);
     newGame.gameIsOver = true;
-    // newGame.gameOver();
+    newGame.gameOver();
   }
 }
 
@@ -208,10 +204,6 @@ let index1 = selectRandomPiece(pieces);
 let index2 = selectRandomPiece(pieces);
 let index3 = selectRandomPiece(pieces);
 
-// drawPiece(index1);
-// drawPiece(index2);
-// drawPiece(index3);
-
-// drawPiece(17);
-drawPiece(16);
-drawPiece(0);
+drawPiece(index1);
+drawPiece(index2);
+drawPiece(index3);

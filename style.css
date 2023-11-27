@@ -5,11 +5,12 @@ html {
   background-color: black;
   font-family: "IBM Plex Mono", monospace;
   text-align: center;
+  color: black;
 }
 
 body {
   width: 700px;
-  border-radius: 25px;
+  border-radius: 2px;
   padding: 20px 0px;
   background-color: #f8f5f4; /*  #0f1421;*/
 }
@@ -27,7 +28,7 @@ body {
 #logo-game {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .row1,
@@ -35,7 +36,7 @@ body {
 .row3,
 .row4 {
   display: flex;
-  gap: 2px;
+  gap: 4px;
 }
 
 .block1 {
@@ -169,7 +170,7 @@ body {
   gap: 50px;
   height: 350px;
   width: 300px;
-  border-radius: 25px;
+  border-radius: 2px;
   position: absolute;
   top: 50%;
   left: 50%;
