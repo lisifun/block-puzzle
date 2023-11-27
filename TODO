@@ -1,6 +1,5 @@
 TO DO
 
-- Create a button to restart the game and show a message asking if the user really want to start again
 - If the currecnt score is bigger than the maxScore show a message (GREAT!)
 - Check at the end of the game if current score > maxScore.
 - If current score > maxScore, update maxScore for the next game
@@ -8,7 +7,6 @@ TO DO
 - Enter a new player or select one
 - Ranking system
 - Create a buttom to see all the players and select one
-- Create a button that changes the mode of the game (light/dark)
 
 DONE
 
@@ -29,3 +27,5 @@ DONE
 - Fix background color
 - Fix CSS buttons
 - Show the pieces smaller in the the random pieces element
+- Create a button to restart the game and show a message asking if the user really want to start again
+- Create a button that changes the mode of the game (light/dark)
