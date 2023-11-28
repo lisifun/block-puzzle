@@ -187,7 +187,7 @@ async function drop(e) {
   // To check if the game is Over
   let result = [];
 
-  await new Promise((r) => setTimeout(r, 500));
+  await new Promise((r) => setTimeout(r, 1000));
   for (let i = 0; i < randomPieces.childNodes.length; i++) {
     let piece = pieces[Number(randomPieces.childNodes[i].id)];
     result.push(newGame.board.isGameOver(piece, newGame.board.boardStatus));

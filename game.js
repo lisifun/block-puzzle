@@ -4,6 +4,9 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.restartScreen = document.getElementById("restart-game");
     this.gameEndScreen = document.getElementById("end-screen");
+    this.gameEndScreenHighscore = document.getElementById(
+      "end-screen-highscore"
+    );
     this.scoreElement = document.getElementById("actual-score");
     this.maxScoreElement = document.getElementById("max-score");
     this.score = 0;
@@ -17,10 +20,11 @@ class Game {
     this.gameScreen.style.display = "none";
     this.restartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
+    this.gameEndScreenHighscore.style.display = "none";
     setTimeout(() => {
       this.startScreen.style.display = "none";
       this.gameScreen.style.display = "inherit";
-      this.gameEndScreen.style.display = "none";
+      // this.gameEndScreen.style.display = "none";
       drawBoard(this.board.boardStatus, this.board.boardElement);
       pickThree();
     }, 1500);
@@ -78,9 +82,23 @@ class Game {
 
   gameOver() {
     if (this.gameIsOver === true) {
-      setTimeout(() => {
-        this.gameEndScreen.style.display = "inherit";
-      }, 1500);
+      alert("GAME OVER!");
+      if (this.score > this.maxScore) {
+        setTimeout(() => {
+          this.gameEndScreenHighscore.querySelector(
+            "#final-highscore"
+          ).innerText = this.score;
+          this.gameEndScreenHighscore.style.display = "inherit";
+          // this.gameEndScreenHighscore;
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          this.gameEndScreen.querySelector("#final-score").innerText =
+            this.score;
+          this.gameEndScreen.style.display = "inherit";
+          // this.gameEndScreen;
+        }, 2000);
+      }
     }
   }
 
@@ -90,6 +108,8 @@ class Game {
       this.maxScoreElement.innerHTML = this.maxScore;
     }
     this.gameEndScreen.style.display = "none";
+    this.gameEndScreenHighscore.style.display = "none";
+
     randomPieces.innerHTML = "";
     this.board = new Board();
     this.score = 0;

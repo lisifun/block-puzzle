@@ -155,7 +155,8 @@ body.dark-mode {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
-#end-screen {
+#end-screen,
+#end-screen-highscore {
   position: fixed;
   top: 0;
   left: 0;
@@ -165,7 +166,8 @@ body.dark-mode {
 }
 
 #restart-screen-element,
-#end-screen-element {
+#end-screen-element,
+#end-screen-element-highscore {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -183,7 +185,8 @@ body.dark-mode {
 }
 
 .restart-message,
-.end-message {
+.end-message,
+.end-message-highscore {
   font-size: 1.5em;
 }
 
@@ -199,7 +202,8 @@ body.dark-mode {
 }
 
 #save-game,
-#restart-button-game-over {
+#restart-button-game-over,
+#restart-button-game-over-highscore {
   font-size: 1em;
   color: white;
   width: 165px;
@@ -207,4 +211,11 @@ body.dark-mode {
   border-radius: 50px;
   background-color: #03c7b6;
   border: none;
+}
+
+#final-score,
+#final-highscore {
+  font-size: 2em;
+  font-weight: 900;
+  color: #f37f22;
 }

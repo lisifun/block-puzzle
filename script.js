@@ -15,6 +15,14 @@ restartButtonGameOver.addEventListener("click", () => {
   newGame.startNewGame();
 });
 
+// To start a new game when the game is over and the player broke the highscore
+const restartButtonGameOverHighscore = document.getElementById(
+  "restart-button-game-over-highscore"
+);
+restartButtonGameOverHighscore.addEventListener("click", () => {
+  newGame.startNewGame();
+});
+
 // To switch the mode of the game
 const switchButton = document.getElementById("mode-button");
 switchButton.addEventListener("click", function toggleMode() {
@@ -34,6 +42,7 @@ switchButton.addEventListener("click", function toggleMode() {
 // To track mouse position and check if the mouse is inside the board
 let mouseX;
 let mouseY;
+
 let isFitting;
 let selectedIndex;
 let newChanges;
