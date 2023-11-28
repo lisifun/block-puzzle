@@ -59,8 +59,8 @@ function dragAndDropOntoBoard(e) {
   // mouseX = pieceProperties.left;
   // mouseY = pieceProperties.top;
 
-  mouseX = e.pageX - difx;
-  mouseY = e.pageY - dify;
+  mouseX = e.pageX - difx + 2.5;
+  mouseY = e.pageY - dify + 2.5;
 
   const board = document.getElementById("board");
   const boardDOMRect = board.getBoundingClientRect();
@@ -75,6 +75,7 @@ function dragAndDropOntoBoard(e) {
   //   mouseY
   // );
   // console.log("selected piece => ", pieces[selectedPiece.id]);
+
   // Inside the boundaries of the board
   if (
     mouseX >= boardDOMRect.left &&
