@@ -1,18 +1,17 @@
-let newGame;
-newGame = new Game();
+let newGame = new Game();
 newGame.open();
 
-let newBoard;
-newBoard = new Board();
-const newBoardElement = newBoard.boardElement;
-const newBoardStatus = newBoard.boardStatus;
-
-drawBoard(newBoardStatus, newBoardElement);
-
-// To restart the game with the button
-// To show the box container when the player wants to restart the game
+// To restart the game if the player want to start over
 const restartButton = document.getElementById("restart-button");
 restartButton.addEventListener("click", () => {
+  newGame.restartGame();
+});
+
+// To start a new game when the game is over
+const restartButtonGameOver = document.getElementById(
+  "restart-button-game-over"
+);
+restartButtonGameOver.addEventListener("click", () => {
   newGame.startNewGame();
 });
 
@@ -24,19 +23,12 @@ switchButton.addEventListener("click", function toggleMode() {
   const board = document.getElementById("board");
   // const endScreen = document.getElementById("end-screen-element");
 
-  console.log(board.childNodes);
-
   body.classList.toggle("dark-mode");
   board.classList.toggle("dark-mode");
   //   endScreen.classList.toggle("dark-mode");
   for (let icon of icons) {
     icon.classList.toggle("dark-mode");
   }
-
-  // i need to change the color of the block and for that i also need to modify the functiond draw!!!!
-  // for (let block of board.childNodes) {
-  //   block.style.backgroundColor = "#464646";
-  // }
 });
 
 // To track mouse position and check if the mouse is inside the board
@@ -54,7 +46,7 @@ function dragAndDropOntoBoard(e) {
   mouseX = e.pageX;
   mouseY = e.pageY;
 
-  const board = newBoard.boardElement;
+  const board = document.getElementById("board");
   const boardDOMRect = board.getBoundingClientRect();
 
   // Inside the boundaries of the board
@@ -79,7 +71,10 @@ function dragAndDropOntoBoard(e) {
         mouseY <= boardChildDOMRect.bottom
       ) {
         // Checking if is possible to drop the selected piece in that place of the board
-        isFitting = newBoard.isFitPiece(pieces[Number(selectedPiece.id)], i);
+        isFitting = newGame.board.isFitPiece(
+          pieces[Number(selectedPiece.id)],
+          i
+        );
         if (isFitting) {
           selectedIndex = i;
         }

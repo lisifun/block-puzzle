@@ -88,6 +88,7 @@ let selectedPiece;
 //Function to draw a piece
 function drawPiece(ramdomIndex) {
   let piece = pieces[ramdomIndex];
+
   // To create a new div element
   let newPiece = document.createElement("div");
   newPiece.id = ramdomIndex;
@@ -163,14 +164,14 @@ let randomPieces = document.getElementById("random-pieces");
 // To drop the piece
 async function drop(e) {
   if (isFitting) {
-    let newChanges = newBoard.updateBoardWithPiece(
+    let newChanges = newGame.board.updateBoardWithPiece(
       pieces[Number(selectedPiece.id)],
       selectedIndex
     );
 
     currentBoardStatus = checkAndCleanCompletedLines(
-      drawBoard(newChanges, newBoardElement),
-      newBoardElement
+      drawBoard(newChanges, newGame.board.boardElement),
+      newGame.board.boardElement
     );
 
     newGame.updateScoreDropPiece(pieces[selectedPiece.id]);
@@ -186,25 +187,14 @@ async function drop(e) {
   // To check if the game is Over
   let result = [];
 
-  await new Promise((r) => setTimeout(r, 2000));
+  await new Promise((r) => setTimeout(r, 500));
   for (let i = 0; i < randomPieces.childNodes.length; i++) {
     let piece = pieces[Number(randomPieces.childNodes[i].id)];
-    result.push(newBoard.isGameOver(piece, newBoard.boardStatus));
+    result.push(newGame.board.isGameOver(piece, newGame.board.boardStatus));
   }
 
-  console.log("RESULT SO FAR ", result);
   if (!result.includes(true)) {
-    alert(`GAME OVER! NO SPACE LEFT`);
     newGame.gameIsOver = true;
     newGame.gameOver();
   }
 }
-
-// let index1 = selectRandomPiece(pieces);
-// let index2 = selectRandomPiece(pieces);
-// let index3 = selectRandomPiece(pieces);
-
-// drawPiece(index1);
-// drawPiece(index2);
-// drawPiece(index3);
-pickThree();

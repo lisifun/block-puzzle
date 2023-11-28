@@ -8,8 +8,8 @@ class Game {
     this.maxScoreElement = document.getElementById("max-score");
     this.score = 0;
     this.maxScore = 0;
-    this.restartGame = false;
     this.gameIsOver = false;
+    this.board = new Board();
   }
 
   open() {
@@ -21,22 +21,27 @@ class Game {
       this.startScreen.style.display = "none";
       this.gameScreen.style.display = "inherit";
       this.gameEndScreen.style.display = "none";
-    }, 2000);
+      drawBoard(this.board.boardStatus, this.board.boardElement);
+      pickThree();
+    }, 1500);
   }
 
-  startNewGame() {
+  restartGame() {
     this.restartScreen.style.display = "inherit";
 
     // If the user select YES (to start a new game)
     const yesButton = document.getElementById("yes-button");
-    console.log(yesButton);
+    const randomPieces = document.getElementById("random-pieces");
+
     yesButton.addEventListener("click", () => {
-      let newBoard = new Board();
-      let newGame = new Game();
-      this.restartScreen.style.display = "none";
+      randomPieces.innerHTML = "";
+      this.board = new Board();
       this.score = 0;
       this.scoreElement.innerHTML = this.score;
-      drawBoard(newBoard.boardStatus, newBoard.boardElement);
+      drawBoard(this.board.boardStatus, this.board.boardElement);
+      pickThree();
+
+      this.restartScreen.style.display = "none";
     });
 
     // If the user select NO
@@ -75,7 +80,21 @@ class Game {
     if (this.gameIsOver === true) {
       setTimeout(() => {
         this.gameEndScreen.style.display = "inherit";
-      }, 2000);
+      }, 1500);
     }
+  }
+
+  startNewGame() {
+    if (this.score > this.maxScore) {
+      this.maxScore = this.score;
+      this.maxScoreElement.innerHTML = this.maxScore;
+    }
+    this.gameEndScreen.style.display = "none";
+    randomPieces.innerHTML = "";
+    this.board = new Board();
+    this.score = 0;
+    this.scoreElement.innerHTML = this.score;
+    drawBoard(this.board.boardStatus, this.board.boardElement);
+    pickThree();
   }
 }

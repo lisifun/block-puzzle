@@ -1,8 +1,7 @@
 TO DO
 
-- If the currecnt score is bigger than the maxScore show a message (GREAT!)
+- If the current score is bigger than the maxScore show a message (GREAT!)
 - Check at the end of the game if current score > maxScore.
-- If current score > maxScore, update maxScore for the next game
 - Generate a button to turn the availables pieces
 - Enter a new player or select one
 - Ranking system
@@ -29,3 +28,4 @@ DONE
 - Show the pieces smaller in the the random pieces element
 - Create a button to restart the game and show a message asking if the user really want to start again
 - Create a button that changes the mode of the game (light/dark)
+- If current score > maxScore, update maxScore for the next game
