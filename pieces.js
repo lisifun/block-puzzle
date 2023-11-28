@@ -150,7 +150,11 @@ function resizeBlocks(piece, newWidth, newHeight) {
 
 // To drag the piece
 function drag(e) {
+  let targetProperties = e.target.getBoundingClientRect();
+  difx = e.pageX - targetProperties.left;
+  dify = e.pageY - targetProperties.top;
   selectedPiece = e.target;
+  console.log("X and Y", e.pageX, e.pageY);
 
   e.dataTransfer.setData("text", e.target.id);
   selectedPiece.style.transition = "opacity 10000s";

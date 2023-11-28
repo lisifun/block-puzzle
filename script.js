@@ -43,6 +43,9 @@ switchButton.addEventListener("click", function toggleMode() {
 let mouseX;
 let mouseY;
 
+let difx;
+let dify;
+
 let isFitting;
 let selectedIndex;
 let newChanges;
@@ -52,12 +55,26 @@ document.addEventListener("dragover", dragAndDropOntoBoard, false);
 
 function dragAndDropOntoBoard(e) {
   e.preventDefault();
-  mouseX = e.pageX;
-  mouseY = e.pageY;
+  let pieceProperties = selectedPiece.getBoundingClientRect();
+  // mouseX = pieceProperties.left;
+  // mouseY = pieceProperties.top;
+
+  mouseX = e.pageX - difx;
+  mouseY = e.pageY - dify;
 
   const board = document.getElementById("board");
   const boardDOMRect = board.getBoundingClientRect();
 
+  console.log("Properties", difx, dify);
+
+  // console.log("selected piece => ", selectedPiece);
+  // console.log(
+  //   "Selected properties ===>",
+  //   getCoords(selectedPiece),
+  //   mouseX,
+  //   mouseY
+  // );
+  // console.log("selected piece => ", pieces[selectedPiece.id]);
   // Inside the boundaries of the board
   if (
     mouseX >= boardDOMRect.left &&
@@ -90,4 +107,13 @@ function dragAndDropOntoBoard(e) {
       }
     }
   }
+}
+
+function getCoords(element) {
+  let properties = element.getBoundingClientRect();
+
+  return {
+    top: element.offsetTop,
+    left: element.offsetLeft,
+  };
 }
