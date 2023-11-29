@@ -82,7 +82,6 @@ class Game {
 
   gameOver() {
     if (this.gameIsOver === true) {
-      alert("GAME OVER!");
       if (this.score > this.maxScore) {
         setTimeout(() => {
           this.gameEndScreenHighscore.querySelector(
