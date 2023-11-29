@@ -29,11 +29,9 @@ switchButton.addEventListener("click", function toggleMode() {
   const body = document.body;
   const icons = document.getElementsByTagName("i");
   const board = document.getElementById("board");
-  // const endScreen = document.getElementById("end-screen-element");
 
   body.classList.toggle("dark-mode");
   board.classList.toggle("dark-mode");
-  //   endScreen.classList.toggle("dark-mode");
   for (let icon of icons) {
     icon.classList.toggle("dark-mode");
   }
@@ -56,25 +54,12 @@ document.addEventListener("dragover", dragAndDropOntoBoard, false);
 function dragAndDropOntoBoard(e) {
   e.preventDefault();
   let pieceProperties = selectedPiece.getBoundingClientRect();
-  // mouseX = pieceProperties.left;
-  // mouseY = pieceProperties.top;
-
   mouseX = e.pageX - difx + 2.5;
   mouseY = e.pageY - dify + 2.5;
 
+  console.log(mouseX, mouseY);
   const board = document.getElementById("board");
   const boardDOMRect = board.getBoundingClientRect();
-
-  console.log("Properties", difx, dify);
-
-  // console.log("selected piece => ", selectedPiece);
-  // console.log(
-  //   "Selected properties ===>",
-  //   getCoords(selectedPiece),
-  //   mouseX,
-  //   mouseY
-  // );
-  // console.log("selected piece => ", pieces[selectedPiece.id]);
 
   // Inside the boundaries of the board
   if (
@@ -86,6 +71,7 @@ function dragAndDropOntoBoard(e) {
     // The mouse is inside the board
     // Creating a Nodelist of all elements inside the div board
     const boardChildren = board.querySelectorAll(".board-block");
+    console.log("correct, you are inside the board");
 
     // To iterate through the Nodelist and find the board's position (i => index) where the user is trying to drop the piece
     for (let i = 0; i < boardChildren.length; i++) {
@@ -98,6 +84,7 @@ function dragAndDropOntoBoard(e) {
         mouseY <= boardChildDOMRect.bottom
       ) {
         // Checking if is possible to drop the selected piece in that place of the board
+        console.log("selected index in the board", i);
         isFitting = newGame.board.isFitPiece(
           pieces[Number(selectedPiece.id)],
           i

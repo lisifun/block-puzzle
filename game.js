@@ -21,13 +21,14 @@ class Game {
     this.restartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
     this.gameEndScreenHighscore.style.display = "none";
+
     setTimeout(() => {
       this.startScreen.style.display = "none";
       this.gameScreen.style.display = "inherit";
-      // this.gameEndScreen.style.display = "none";
+      this.gameEndScreen.style.display = "none";
       drawBoard(this.board.boardStatus, this.board.boardElement);
       pickThree();
-    }, 1500);
+    }, 1000);
   }
 
   restartGame() {

@@ -111,7 +111,7 @@ function drawPiece(ramdomIndex) {
       newBlock.style.width = "38px";
       newBlock.style.height = "38px";
       newBlock.style.backgroundColor = piece[i][j].color;
-      newBlock.style.margin = "2.5px";
+      newBlock.style.margin = "1px";
 
       newRowBlocks.appendChild(newBlock);
     }
@@ -138,29 +138,16 @@ function pickThree() {
   drawPiece(index3);
 }
 
-// Function to resize the blocks of the selected piece
-// function resizeBlocks(piece, newWidth, newHeight) {
-//   let blocks = piece.querySelectorAll(".new-block");
-
-//   for (let i = 0; i < blocks.length; i++) {
-//     blocks[i].style.width = `${newWidth}px`;
-//     blocks[i].style.height = `${newHeight}px`;
-//   }
-// }
-
 // To drag the piece
 function drag(e) {
   let targetProperties = e.target.getBoundingClientRect();
   difx = e.pageX - targetProperties.left;
   dify = e.pageY - targetProperties.top;
   selectedPiece = e.target;
-  console.log("X and Y", e.target, e.pageX, e.pageY);
 
   e.dataTransfer.setData("text", e.target.id);
   selectedPiece.style.transition = "opacity 10000s";
   selectedPiece.style.opacity = 0;
-
-  // resizeBlocks(selectedPiece, 40, 40);
 }
 
 // Random pieces
