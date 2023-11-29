@@ -111,7 +111,7 @@ function drawPiece(ramdomIndex) {
       newBlock.style.width = "38px";
       newBlock.style.height = "38px";
       newBlock.style.backgroundColor = piece[i][j].color;
-      newBlock.style.margin = "1px";
+      newBlock.style.margin = "1.5px";
 
       newRowBlocks.appendChild(newBlock);
     }
@@ -141,8 +141,13 @@ function pickThree() {
 // To drag the piece
 function drag(e) {
   let targetProperties = e.target.getBoundingClientRect();
-  difx = e.pageX - targetProperties.left;
-  dify = e.pageY - targetProperties.top;
+
+  // difx = e.pageX - targetProperties.left;
+  // dify = e.pageY - targetProperties.top;
+
+  difx = e.clientX - targetProperties.left;
+  dify = e.clientY - targetProperties.top;
+
   selectedPiece = e.target;
 
   e.dataTransfer.setData("text", e.target.id);

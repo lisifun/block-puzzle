@@ -15,12 +15,23 @@ restartButtonGameOver.addEventListener("click", () => {
   newGame.startNewGame();
 });
 
-// To start a new game when the game is over and the player broke the highscore
-const restartButtonGameOverHighscore = document.getElementById(
-  "restart-button-game-over-highscore"
-);
-restartButtonGameOverHighscore.addEventListener("click", () => {
-  newGame.startNewGame();
+// To save the game at the end
+const saveGameButton = document.getElementById("save-game");
+saveGameButton.addEventListener("click", () => {
+  newGame.saveGame();
+});
+
+// To submit the info's player
+const submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", () => {
+  var name = document.getElementById("name").value;
+  var score = newGame.score;
+  if (name === "") {
+    alert("Please fill in the field");
+    return;
+  }
+
+  newGame.saveGameScreen.style.display = "none";
 });
 
 // To switch the mode of the game
@@ -54,10 +65,9 @@ document.addEventListener("dragover", dragAndDropOntoBoard, false);
 function dragAndDropOntoBoard(e) {
   e.preventDefault();
   let pieceProperties = selectedPiece.getBoundingClientRect();
-  mouseX = e.pageX - difx + 2.5;
-  mouseY = e.pageY - dify + 2.5;
+  mouseX = e.pageX - difx + 2;
+  mouseY = e.pageY - dify + 2;
 
-  console.log(mouseX, mouseY);
   const board = document.getElementById("board");
   const boardDOMRect = board.getBoundingClientRect();
 
@@ -71,7 +81,6 @@ function dragAndDropOntoBoard(e) {
     // The mouse is inside the board
     // Creating a Nodelist of all elements inside the div board
     const boardChildren = board.querySelectorAll(".board-block");
-    console.log("correct, you are inside the board");
 
     // To iterate through the Nodelist and find the board's position (i => index) where the user is trying to drop the piece
     for (let i = 0; i < boardChildren.length; i++) {
@@ -84,7 +93,7 @@ function dragAndDropOntoBoard(e) {
         mouseY <= boardChildDOMRect.bottom
       ) {
         // Checking if is possible to drop the selected piece in that place of the board
-        console.log("selected index in the board", i);
+
         isFitting = newGame.board.isFitPiece(
           pieces[Number(selectedPiece.id)],
           i
@@ -95,13 +104,4 @@ function dragAndDropOntoBoard(e) {
       }
     }
   }
-}
-
-function getCoords(element) {
-  let properties = element.getBoundingClientRect();
-
-  return {
-    top: element.offsetTop,
-    left: element.offsetLeft,
-  };
 }

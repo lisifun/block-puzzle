@@ -4,9 +4,7 @@ class Game {
     this.gameScreen = document.getElementById("game-screen");
     this.restartScreen = document.getElementById("restart-game");
     this.gameEndScreen = document.getElementById("end-screen");
-    this.gameEndScreenHighscore = document.getElementById(
-      "end-screen-highscore"
-    );
+    this.saveGameScreen = document.getElementById("save-screen");
     this.scoreElement = document.getElementById("actual-score");
     this.maxScoreElement = document.getElementById("max-score");
     this.score = 0;
@@ -20,12 +18,11 @@ class Game {
     this.gameScreen.style.display = "none";
     this.restartScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
-    this.gameEndScreenHighscore.style.display = "none";
+    this.saveGameScreen.style.display = "none";
 
     setTimeout(() => {
       this.startScreen.style.display = "none";
       this.gameScreen.style.display = "inherit";
-      this.gameEndScreen.style.display = "none";
       drawBoard(this.board.boardStatus, this.board.boardElement);
       pickThree();
     }, 1000);
@@ -83,22 +80,17 @@ class Game {
 
   gameOver() {
     if (this.gameIsOver === true) {
-      if (this.score > this.maxScore) {
-        setTimeout(() => {
-          this.gameEndScreenHighscore.querySelector(
-            "#final-highscore"
-          ).innerText = this.score;
-          this.gameEndScreenHighscore.style.display = "inherit";
-          // this.gameEndScreenHighscore;
-        }, 2000);
-      } else {
-        setTimeout(() => {
-          this.gameEndScreen.querySelector("#final-score").innerText =
-            this.score;
-          this.gameEndScreen.style.display = "inherit";
-          // this.gameEndScreen;
-        }, 2000);
-      }
+      setTimeout(() => {
+        this.gameEndScreen.querySelector("#final-score").innerText = this.score;
+        this.gameEndScreen.style.display = "inherit";
+        if (this.score > this.maxScore) {
+          this.gameEndScreen.querySelector("#feedback").innerText = `FANTASTIC!
+              NEW PERSONAL HIGHSCORE`;
+        } else {
+          this.gameEndScreen.querySelector("#feedback").innerText =
+            "BRILLIANT!";
+        }
+      }, 1000);
     }
   }
 
@@ -108,7 +100,6 @@ class Game {
       this.maxScoreElement.innerHTML = this.maxScore;
     }
     this.gameEndScreen.style.display = "none";
-    this.gameEndScreenHighscore.style.display = "none";
 
     randomPieces.innerHTML = "";
     this.board = new Board();
@@ -116,5 +107,10 @@ class Game {
     this.scoreElement.innerHTML = this.score;
     drawBoard(this.board.boardStatus, this.board.boardElement);
     pickThree();
+  }
+
+  saveGame() {
+    this.saveGameScreen.style.display = "inherit";
+    this.saveGameScreen.querySelector("#final-score").innerText = this.score;
   }
 }

@@ -147,16 +147,9 @@ body.dark-mode {
   display: flex;
 }
 
-#restart-game {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-}
+#restart-game,
 #end-screen,
-#end-screen-highscore {
+#save-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -165,12 +158,9 @@ body.dark-mode {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-#restart-screen-element,
-#end-screen-element,
-#end-screen-element-highscore {
+#restart-screen-element {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 30px;
   height: 350px;
@@ -184,10 +174,9 @@ body.dark-mode {
   color: #484848;
 }
 
-.restart-message,
-.end-message,
-.end-message-highscore {
-  font-size: 1.5em;
+.restart-message {
+  font-size: 2em;
+  color: #990000;
 }
 
 #yes-button,
@@ -201,21 +190,74 @@ body.dark-mode {
   border: none;
 }
 
-#save-game,
+#end-screen-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 400px;
+  width: 300px;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f5f4;
+  color: #484848;
+}
+
+.end-message {
+  font-size: 1.5em;
+}
+
+#final-score {
+  font-size: 2em;
+  font-weight: 900;
+  color: #f37f22;
+}
+
 #restart-button-game-over,
-#restart-button-game-over-highscore {
+#save-game,
+#submit-button {
   font-size: 1em;
   color: white;
-  width: 165px;
-  height: 57px;
+  width: 150px;
+  height: 50px;
   border-radius: 50px;
   background-color: #03c7b6;
   border: none;
 }
 
-#final-score,
-#final-highscore {
-  font-size: 2em;
-  font-weight: 900;
-  color: #f37f22;
+#save-screen-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 250px;
+  width: 300px;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f5f4;
+  color: #484848;
+}
+
+#name-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#name-form > label {
+  font-size: 1.5em;
+}
+
+#name-form > input {
+  border: 1px solid #484848;
+  border-radius: 5px;
+  height: 25px;
 }
